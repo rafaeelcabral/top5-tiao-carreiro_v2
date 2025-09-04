@@ -224,6 +224,21 @@ header h2 {
     color: #8B4513;
 }
 
+.approved {
+    color: green;
+    font-weight: bold;
+}
+
+.rejected {
+    color: red;
+    font-weight: bold;
+}
+
+.pending {
+    color: orange;
+    font-weight: bold;
+}
+
 @media (max-width: 600px) {
     .music-card {
         padding: 1rem;
@@ -262,4 +277,5 @@ header h2 {
         height: 150px;
         margin-bottom: 1.5rem;
     }
+
 }

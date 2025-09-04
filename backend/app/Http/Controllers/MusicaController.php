@@ -5,18 +5,39 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Http;
     use Illuminate\Support\Facades\Validator;
+    use Laravel\Sanctum\PersonalAccessToken;
     use App\Models\Musica;
 
     class MusicaController extends Controller {
         
         // Retorna as 5 músicas com mais vizualizações
-        public function index() {
+        public function index(Request $request) {
 
-            $top5 = Musica::orderByDesc('visualizacoes')->limit(5)->get();
+            $query = Musica::query();
 
-            return response()->json($top5);
+            $user = null;
+
+            // Checa token manualmente
+            $token = $request->bearerToken();
+            if ($token) {
+                $accessToken = PersonalAccessToken::findToken($token);
+                if ($accessToken) {
+                    $user = $accessToken->tokenable; // recupera o usuário
+                }
+            }
+
+            if ($user) {
+                // Usuário logado vê tudo (aprovadas e pendentes)
+                $musicas = $query->orderByDesc('visualizacoes')->get();
+            } else {
+                // Usuário não logado vê apenas aprovadas
+                $musicas = $query->where('aprovada', true)->orderByDesc('visualizacoes')->get();
+            }
+
+            return response()->json($musicas);
 
         }
+
 
         /* Função responsável por:
              1 - Receber a url passada na requisição;
@@ -131,9 +152,46 @@
                 'titulo' => $title,
                 'visualizacoes' => $views,
                 'youtube_id' => $videoId,
-                'thumb' => 'https://img.youtube.com/vi/'.$videoId.'/hqdefault.jpg'
+                'thumb' => 'https://img.youtube.com/vi/'.$videoId.'/hqdefault.jpg',
+                'aprovada' => null
             ];
 
+        }
+
+        //--------------------------------------------------------------------------------------------
+
+        public function approve($id) {
+
+            $musica = Musica::findOrFail($id);
+
+            $musica->aprovada = true;
+
+            $musica->save();
+
+            return response()->json(['message' => 'Música aprovada com sucesso']);
+
+        }
+
+        public function reject($id) {
+
+            $musica = Musica::findOrFail($id);
+
+            $musica->aprovada = false;
+
+            $musica->save();
+
+            return response()->json(['message' => 'Música rejeitada com sucesso']);
+            
+        }
+
+        public function remove($id) {
+
+            $musica = Musica::findOrFail($id);
+
+            $musica->delete();
+
+            return response()->json(['message' => 'Música removida com sucesso']);
+            
         }
 
     }

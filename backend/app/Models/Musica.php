@@ -15,6 +15,7 @@
             'visualizacoes',
             'youtube_id',
             'thumb',
+            'aprovada'
         ];
 
     }
