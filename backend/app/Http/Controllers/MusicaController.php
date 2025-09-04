@@ -66,14 +66,12 @@
                 return response()->json([
                     'success' => true,
                     'musica' => $musica
-                ]);
+                ], 201);
 
             } catch (\Exception $e) {
-
                 return response()->json([
                     'error' => 'Erro ao processar vídeo: ' . $e->getMessage()
                 ], 500);
-
             }
 
         }
