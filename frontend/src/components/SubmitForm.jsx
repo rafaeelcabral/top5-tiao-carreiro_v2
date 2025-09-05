@@ -48,7 +48,7 @@ function SubmitForm({ onNewMusica }) {
     
     return (
 
-        <div className="card p-3 mb-4 mx-auto" style={{ maxWidth: "850px" }}>
+        <div className="card p-3 mb-5 mx-auto" style={{ maxWidth: "850px" }}>
 
             <div className="card-body">
 
