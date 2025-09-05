@@ -16,6 +16,7 @@
                 'youtube_id' => $this->faker->regexify('[A-Za-z0-9_-]{11}'),
                 'visualizacoes' => $this->faker->numberBetween(0, 1000000),
                 'thumb' => $this->faker->imageUrl(480, 360, 'music', true),
+                'aprovada' => $this->faker->boolean(), // gera true ou false aleatoriamente
             ];
 
         }

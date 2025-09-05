@@ -1,15 +1,26 @@
 function Header() {
 
     return (
-        <header>
 
-            <img src="/tiao-carreiro-pardinho.png" alt="Tião Carreiro" className="artist-img"/>
+        <header className="bg-dark text-white py-4 mb-2 shadow-sm">
 
-            <h1>Top 5 Músicas Mais Tocadas</h1>
+            <div className="container text-center">
 
-            <h2>Tião Carreiro & Pardinho</h2>
+                <img
+                src="/tiao-carreiro-pardinho.png"
+                alt="Tião Carreiro"
+                className="img-fluid rounded-circle mb-3"
+                style={{ width: "120px", height: "120px", objectFit: "cover" }}
+                />
+
+                <h1 className="h3 fw-bold">Top 5 Músicas Mais Tocadas</h1>
+
+                <h2 className="h5 fw-bold">Tião Carreiro & Pardinho</h2>
+
+            </div>
 
         </header>
+
     );
 
 }

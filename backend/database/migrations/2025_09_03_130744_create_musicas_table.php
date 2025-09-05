@@ -16,8 +16,10 @@
                 $table->bigInteger('visualizacoes');
                 $table->string('youtube_id');
                 $table->string('thumb');
+                $table->boolean('aprovada')->nullable(); // <- adiciona esta linha
                 $table->timestamps();
             });
+
 
             // Inserindo os 5 registros iniciais
             DB::table('musicas')->insert([
@@ -26,6 +28,7 @@
                     'visualizacoes' => 5200000,
                     'youtube_id' => 's9kVG2ZaTS4',
                     'thumb' => 'https://img.youtube.com/vi/s9kVG2ZaTS4/hqdefault.jpg',
+                    'aprovada' => null,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
@@ -34,6 +37,7 @@
                     'visualizacoes' => 5000000,
                     'youtube_id' => 'lpGGNA6_920',
                     'thumb' => 'https://img.youtube.com/vi/lpGGNA6_920/hqdefault.jpg',
+                    'aprovada' => null,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
@@ -42,6 +46,7 @@
                     'visualizacoes' => 153000,
                     'youtube_id' => 'FxXXvPL3JIg',
                     'thumb' => 'https://img.youtube.com/vi/FxXXvPL3JIg/hqdefault.jpg',
+                    'aprovada' => null,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
@@ -50,6 +55,7 @@
                     'visualizacoes' => 154000,
                     'youtube_id' => 'tRQ2PWlCcZk',
                     'thumb' => 'https://img.youtube.com/vi/tRQ2PWlCcZk/hqdefault.jpg',
+                    'aprovada' => null,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
@@ -58,6 +64,7 @@
                     'visualizacoes' => 3300000,
                     'youtube_id' => '4Nb89GFu2g4',
                     'thumb' => 'https://img.youtube.com/vi/4Nb89GFu2g4/hqdefault.jpg',
+                    'aprovada' => null,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]

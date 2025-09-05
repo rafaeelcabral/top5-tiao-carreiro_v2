@@ -224,6 +224,21 @@ header h2 {
     color: #8B4513;
 }
 
+.music-card.large {
+  font-size: 1.2rem;
+  transform: scale(1.0);
+}
+
+.music-card.medium {
+  font-size: 1rem;
+  transform: scale(0.9);
+}
+
+.music-card.small {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
 .approved {
     color: green;
     font-weight: bold;

@@ -10,7 +10,7 @@
 
     class MusicaController extends Controller {
         
-        // Retorna as 5 músicas com mais vizualizações
+        // Retorna músicas por ordem de vizualizações
         public function index(Request $request) {
 
             $query = Musica::query();
@@ -26,12 +26,16 @@
                 }
             }
 
+            $perPage = $request->get('per_page', 10); // controla o tamanho da página
+
             if ($user) {
-                // Usuário logado vê tudo (aprovadas e pendentes)
-                $musicas = $query->orderByDesc('visualizacoes')->get();
+
+                $musicas = $query->orderByDesc('visualizacoes')->paginate($perPage);
+
             } else {
-                // Usuário não logado vê apenas aprovadas
-                $musicas = $query->where('aprovada', true)->orderByDesc('visualizacoes')->get();
+
+                $musicas = $query->where('aprovada', true)->orderByDesc('visualizacoes')->paginate($perPage);
+
             }
 
             return response()->json($musicas);

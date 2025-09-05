@@ -1,7 +1,8 @@
 import axios from "axios";
+import { FaCheck, FaTimes, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 
-function MusicCard({ music, rank, onUpdate, user }) {
+function MusicCard({ music, rank, onUpdate, user, size = "normal" }) {
 
     const token = user?.token; // pega token do user logado
 
@@ -79,45 +80,90 @@ function MusicCard({ music, rank, onUpdate, user }) {
         return "pending";
     };
 
-    console.log(music.aprovada);
+    // Ajustes de tamanho para ranks menores
+    const isSmallRank = rank >= 6 && rank <= 10;
 
+    const cardStyle = {
+        maxWidth: isSmallRank ? "700px" : "850px",
+    };
+
+    const titleClass = isSmallRank ? "fw-bold fs-6" : "fw-bold fs-5";
+
+    const rankClass = isSmallRank ? "me-2 fw-bold fs-5 text-primary" : "me-3 fw-bold fs-4 text-primary";
 
     return (
-        <div className="music-card-container">
+
+        <div className="card mb-3 shadow-sm mx-auto" style={cardStyle}>
+
+            {/* link só cobre o conteúdo, não os botões */}
             <a
                 href={`https://www.youtube.com/watch?v=${music.youtube_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="music-card-link"
+                className="text-decoration-none text-dark"
             >
-                <div className="music-card">
-                    <div className="rank">{rank}</div>
-                    <div className="music-info">
-                        <div className="music-title">{music.titulo}</div>
-                        <div className="views">{music.visualizacoes} visualizações</div>
-                        <div className={`status ${getStatusClass()}`}>{getStatusText()}</div>
+
+                <div className="card-body d-flex align-items-center">
+
+                    <div className={rankClass}>{rank}</div>
+
+                    <div className="flex-grow-1">
+
+                        <div className={titleClass}>{music.titulo}</div>
+
+                        <div className="text-muted small">{music.visualizacoes} visualizações</div>
+
+                        {token && (
+                            <div className={getStatusClass()}>
+                                {getStatusText()}
+                            </div>
+                        )}
+
                     </div>
+
                     <img
                         src={music.thumb}
                         alt={`Thumbnail ${music.titulo}`}
-                        className="thumbnail"
+                        className="img-thumbnail"
+                        style={{
+                        width: isSmallRank ? "100px" : "120px",
+                        height: isSmallRank ? "65px" : "80px",
+                        objectFit: "cover",
+                        }}
                     />
+
                 </div>
+
             </a>
 
-            {/* Botões só aparecem se o usuário estiver logado */}
             {token && (
-                <div className="admin-buttons">
+
+                <div className="card-footer bg-white border-top d-flex gap-2">
+
                     {music.aprovada === null && (
                         <>
-                            <button onClick={approve}>Aprovar</button>
-                            <button onClick={reject}>Reprovar</button>
+
+                            <button className="btn btn-success btn-sm d-flex align-items-center gap-1" onClick={approve}>
+                                <FaCheck /> Aprovar
+                            </button>
+
+                            <button className="btn btn-warning btn-sm d-flex align-items-center gap-1" onClick={reject}>
+                                <FaTimes /> Reprovar
+                            </button>
+
                         </>
                     )}
-                    <button onClick={remove}>Deletar</button>
+
+                    <button className="btn btn-danger btn-sm d-flex align-items-center gap-1" onClick={remove}>
+                        <FaTrash /> Deletar
+                    </button>
+
                 </div>
+
             )}
+
         </div>
+
     );
 
 }

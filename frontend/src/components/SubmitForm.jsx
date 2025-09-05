@@ -48,34 +48,40 @@ function SubmitForm({ onNewMusica }) {
     
     return (
 
-        <div className="submit-form">
+        <div className="card p-3 mb-4 mx-auto" style={{ maxWidth: "850px" }}>
 
-            <h3>Sugerir Nova Música</h3>
+            <div className="card-body">
 
-            <form onSubmit={handleSubmit}>
+                <h5 className="card-title text-center mb-3">Sugerir Nova Música</h5>
 
-                {error && <div className="error-message">{error}</div>}
+                {error && <div className="alert alert-danger">{error}</div>}
 
-                <div className="input-group">
+                <form onSubmit={handleSubmit}>
 
-                    <input
+                    <div className="input-group">
+
+                        <input
                         type="url"
+                        className="form-control"
                         placeholder="Cole aqui o link do YouTube"
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                         required
-                    />
+                        />
 
-                    <button type="submit" className="submit-button">
-                        Enviar Link
-                    </button>
+                        <button type="submit" className="btn btn-success">
+                        Enviar
+                        </button>
 
-                </div>
+                    </div>
 
-            </form>
+                </form>
+
+            </div>
 
         </div>
-    )
+
+    );
 
 }
 
