@@ -89,6 +89,8 @@ function Home() {
     // Ao montar o componente, tenta pegar token do localStorage
     useEffect(() => {
 
+        document.title = "Top Hits 🎵"; 
+
         const token = localStorage.getItem("token");
 
         if (token) {

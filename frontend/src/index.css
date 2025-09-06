@@ -11,27 +11,8 @@ header {
     color: white;
     text-align: center;
     padding: 2rem 1rem;
-    background-image: url('/background.jpg');
+    background-image: url('https://wallpapers.com/images/high/dark-desktop-xbtgvdy6w2t2zp6i.webp');
     background-size: cover;
-    background-position: center;
-}
-
-/* Overlay gradiente sobre a imagem de fundo */
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to right, rgba(139, 69, 19, 0.9), rgba(210, 105, 30, 0.85));
-    z-index: 1;
-}
-
-/* Garante que o conteúdo fique sobre o overlay */
-header > * {
-    position: relative;
-    z-index: 2;
 }
 
 .container {

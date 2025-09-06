@@ -7,15 +7,15 @@ function Header() {
             <div className="container text-center">
 
                 <img
-                src="/tiao-carreiro-pardinho.png"
-                alt="Tião Carreiro"
-                className="img-fluid rounded-circle mb-3"
+                src="/profile.jpeg"
+                alt="Musicas"
+                className="img-fluid rounded-circle border border-4 border-white mb-3"
                 style={{ width: "120px", height: "120px", objectFit: "cover" }}
                 />
 
-                <h1 className="h3 fw-bold">Top 5 Músicas Mais Tocadas</h1>
+                <h1 className="h3 fw-bold text-light">Top Hits 🎵</h1>
 
-                <h2 className="h5 fw-bold">Tião Carreiro & Pardinho</h2>
+                <h2 className="h5 fw-bold text-light">As Músicas mais tocadas no YouTube</h2>
 
             </div>
 
