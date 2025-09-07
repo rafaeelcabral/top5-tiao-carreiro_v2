@@ -53,7 +53,7 @@ Tanto o backend quanto o frontend são containerizados com Docker, garantindo am
 ### Como Executar a Aplicação
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/jansenfelipe/top5-tiao-carreiro.git](https://github.com/rafaeelcabral/top5-tiao-carreiro_v2.git
+   git clone https://github.com/rafaeelcabral/top5-tiao-carreiro_v2.git
    ```
 
 2. **Acesse o diretório do backend**:
