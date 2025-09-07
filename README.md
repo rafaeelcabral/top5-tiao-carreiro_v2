@@ -61,21 +61,11 @@ Tanto o backend quanto o frontend são containerizados com Docker, garantindo am
    cd backend
    ```
 
-3. **Construa e execute o backend**:
+3. **Construa e execute os containers**:
    ```bash
    docker-compose up --build
    ```
 
-4. **Acesse o diretório do frontend**:
-   ```bash
-   cd ../frontend
-   ```
-
-5. **Construa e execute o frontend**:
-   ```bash
-   docker-compose up --build
-   ```
-
-6. **Acesse a aplicação**:
+4. **Acesse a aplicação**:
    Abra o navegador em `http://localhost:3000` para o frontend e `http://localhost:8000` para a API do backend.
 
