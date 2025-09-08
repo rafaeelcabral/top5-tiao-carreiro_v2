@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd zip
+    && docker-php-ext-install gd zip pdo pdo_mysql
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -24,7 +24,7 @@ COPY . .
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Expose the port the app runs on
-EXPOSE 9000
+EXPOSE 8000
 
-# Start the PHP FastCGI Process Manager
-CMD ["php-fpm"]
+# Start Laravel's development server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

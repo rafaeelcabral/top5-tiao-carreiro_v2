@@ -10,7 +10,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/var/www/html
+      - ./:/var/www
     networks:
       - app-network
     depends_on:
@@ -25,7 +25,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend:/usr/src/app
+      - ../frontend:/app
+      - /app/node_modules
     networks:
       - app-network
 

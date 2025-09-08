@@ -1,11 +1,11 @@
-FROM node:18
+FROM node:20
 
 WORKDIR /app
 
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm install
+RUN rm -rf node_modules package-lock.json && npm install
 
 COPY . .
 
