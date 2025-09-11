@@ -66,6 +66,12 @@ Tanto o backend quanto o frontend são containerizados com Docker, garantindo am
    docker-compose up --build
    ```
 
+4. **Para criar tabelas e inserir Usuario na tabela Users**:
+   ```bash
+   php artisan migrate
+   php artisan db:seed --class="Database\Seeders\UserSeeder" 
+   ```
+
 4. **Acesse a aplicação**:
    Abra o navegador em `http://localhost:3000` para o frontend e `http://localhost:8000` para a API do backend.
 
